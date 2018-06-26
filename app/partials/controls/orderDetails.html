@@ -20,13 +20,6 @@
                     <i class="fa">#</i>
                 </div>
             </div>
-            <div class="view-form-icon" ng-if="user.Permissions.contains('Comments')">
-                <div>
-                    <label ng-show="currentOrder.Comments">{{'Comments' | r | xlat}}:</label>
-                    <textarea class="form-control" rows="5" cols="100" ng-model="currentOrder.Comments" ng-attr-placeholder="{{'Comments' | r | xlat}}..." />
-                    <i class="fa fa-edit"></i>
-                </div>
-            </div>
             <div class="view-form-icon" ng-show="user.Permissions.contains('CostCenterPerOrder') && !user.Permissions.contains('CostCenterPerLine') && user.CostCenters.length > 0 || user.Permissions.contains('CostCenterPerOrder') && user.Permissions.contains('FreeFormCostCenter')">
                 <div ng-class="{'view-form-select': !currentOrder.CostCenter && user.CostCenters.length > 1, '': currentOrder.CostCenter }">
                     <label class="required">{{'Cost Center' | r | xlat}}</label>
@@ -40,6 +33,14 @@
                     <i class="fa fa-arrow-down" ng-show="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')"></i>
                 </div>
             </div>
+            <div class="view-form-icon" ng-if="user.Permissions.contains('Comments')">
+                <div>
+                    <label ng-show="currentOrder.Comments">{{'Comments' | r | xlat}}:</label>
+                    <textarea class="form-control" rows="5" cols="100" ng-model="currentOrder.Comments" ng-attr-placeholder="{{'Comments' | r | xlat}}..." />
+                    <i class="fa fa-edit"></i>
+                </div>
+            </div>
+
             <div ng-show="currentOrder.OrderFields">
                 <hr />
                 <div ng-repeat="field in currentOrder.OrderFields">
