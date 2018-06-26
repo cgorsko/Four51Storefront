@@ -28,6 +28,9 @@ function ($routeParams, $sce, $scope, $451, Category, Product, Nav) {
 	    $scope.categoryLoadingIndicator = true;
         Category.get($routeParams.categoryInteropID, function(cat) {
             $scope.currentCategory = cat;
+            if($scope.currentCategory.SortOptions.length === 1){
+            	$scope.sort = $scope.currentCategory.SortOptions[0].SortValue;
+            }
 	        $scope.categoryLoadingIndicator = false;
         });
     }
