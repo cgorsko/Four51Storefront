@@ -1,29 +1,54 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">{{('Related' | r) + ' ' +  ('Products' | r) | xlat}}</h3>
+        <!--<h3 class="panel-title">{{('Related' | r) + ' ' +  ('Products' | r) | xlat}}</h3>-->
+        <h3 class="panel-title">{{('You Might Also Be Interested In' | r) | xlat}}</h3>
     </div>
     <div class="panel-product-list">
         <nav class="nav">
             <ul>
                 <li ng-repeat="p in relatedProducts">
-                    <div class="well">
+                    <div class="well" ng-if="origproductid != p.ExternalID">
                         <div class="row">
-                            <div class="col-sm-4 text-center">
+                            <div class="hidden-xs col-sm-4 text-center">
                                 <a class="thumbnail" href="product/{{p.InteropID}}">
                                     <figure>
-                                        <img ng-src="{{p.SmallImageUrl}}"/>
+                                        <img ng-src="{{p.SmallImageUrl}}" style="max-height: 100px"/>
                                     </figure>
                                     <div class="empty" ng-hide="p.SmallImageUrl">
                                         <span class="fa empty"><i class="fa fa-camera"></i></span>
                                     </div>
-                                    <div class="btn btn-default">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</div>
+                                    <!--<div class="btn btn-default">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</div>-->
                                 </a>
                             </div>
-                            <div class="col-sm-8 text-left">
-                                <div class="panel-body">
-                                    <h3>{{p.Name}}</h3>
-                                    <p ng-bind-html="trusted(p.Description)" />
-                                </div>
+                            <div class="hidden-xs col-sm-8 text-left">
+                                <a href="product/{{p.InteropID}}">
+                                    <div class="panel-body">
+                                        <p><span class="text-primary" ng-show="p.StaticSpecGroups['ItemInfo'].Specs['Prefix'].Value">{{p.StaticSpecGroups['ItemInfo'].Specs['Prefix'].Value}}&nbsp;</span>{{p.Name}}</p>
+                                        <p>{{p.StandardPriceSchedule.PriceBreaks[0].Price | culturecurrency}}</p>
+                                        <!--<p ng-bind-html="trusted(p.Description)" />-->
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- for mobile only-->
+                            <div class="hidden-sm hidden-md hidden-lg col-xs-4 text-center">
+                                <a class="thumbnail" href="product/{{p.InteropID}}">
+                                    <figure>
+                                        <img ng-src="{{p.SmallImageUrl}}" style="max-height: 50px"/>
+                                    </figure>
+                                    <div class="empty" ng-hide="p.SmallImageUrl">
+                                        <span class="fa empty"><i class="fa fa-camera"></i></span>
+                                    </div>
+                                    <!--<div class="btn btn-default">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</div>-->
+                                </a>
+                            </div>
+                            <div class="hidden-sm hidden-md hidden-lg col-xs-8 text-left">
+                                <a href="product/{{p.InteropID}}">
+                                    <div class="panel-body">
+                                        <p><span class="text-primary" ng-show="p.StaticSpecGroups['ItemInfo'].Specs['Prefix'].Value">{{p.StaticSpecGroups['ItemInfo'].Specs['Prefix'].Value}}&nbsp;</span>{{p.Name}}</p>
+                                        <p>{{p.StandardPriceSchedule.PriceBreaks[0].Price | culturecurrency}}</p>
+                                        <!--<p ng-bind-html="trusted(p.Description)" />-->
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
