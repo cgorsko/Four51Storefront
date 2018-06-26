@@ -4,3 +4,191 @@ Theme name: My SPA Theme
 Version: 1.0
 Template: Howdy
 */
+/*
+Static file for Theme changes
+Theme name: My SPA Theme
+Version: 1.0
+Template: Howdy
+*/
+
+
+body {
+    font-family: Merriweather, Arial, Helvetica, sans-serif;
+    background-color: #FFF;
+    font-weight: 700;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+small, .small {
+    font-size: 14px;
+}
+
+.btn {
+    font-weight: 700;
+}
+
+.btn.btn-primary {
+    text-transform: initial;
+}
+
+.panel-nav {
+    font-size: 18px;
+}
+.panel-default, .panel-search, .panel-category-list ul li a .empty, .panel-order {
+    border-color: #fff;
+}
+
+.panel-footer {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.panel-product-list ul li a img {
+    margin-bottom: 0px;
+}
+
+.panel-primary {
+    border-color: #FFF;
+}
+
+.panel-primary .panel-heading .panel-title {
+    color: #fff;
+
+.view-form-icon label {
+    font-size: 14px;
+}
+
+
+.navbar .container .navbar-nav.pull-left li.fadeInLeft a i, .navbar .container-view .navbar-nav.pull-left li.fadeInLeft a i {
+    color: #fff;
+}
+
+.container .navbar-nav li a  {color: #FFFFFF;}
+
+.navbar-fixed-bottom ul li .btn {
+    text-transform: initial;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.navbar-fixed-bottom ul li:last-child .btn {
+    text-transform: initial;
+}
+
+.nav ul li span.text-primary {
+    margin-top: 15px;
+}
+
+
+.thumbnail  img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    max-height: 150px;
+}
+
+.product-image-large {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.badge {
+    color: #FFF;
+    background-color: #1E355E;
+    border-color: #FFF;
+}
+
+.jumbotron {
+    padding: 15px;
+}
+.panel-product-list .well  {
+    border-color: #aaa;
+    color: #1E355E;
+}
+.panel-product-list .well {
+    max-height: 350px;
+    border-bottom-color: #AAA;
+    border-top-color: #FFF;
+    border-left-color: #FFF;
+    border-right-color: #FFF;
+}
+
+.panel .panel-heading .panel-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1E355E;
+    text-transform: none;
+}
+.panel-category-list ul li .well {
+    padding: 19px;
+    border-color: #fff;
+}
+.panel  .panel-heading {border-top: 0px solid #fff;}
+
+
+/*Set Properties for Spending Account Labels*/
+.spendingaccounts {
+    padding: 20px 15px;
+    color: #fff;
+    font-weight:bold;
+}
+/*Keep Nav Bar on top*/
+.navbar-fixed-top.headroom.headroom--unpinned {
+    top: 0px; 
+}
+
+/*Adjust Footer View*/
+.copyright-view {
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/*Set Properties for Rotating Carousel-Banner */
+.carousel-indicators li {
+    border: 1px solid #1E355E;
+    position: relative;
+    bottom: -50px;
+}
+.carousel-indicators .active {background-color: #1E355E;}
+
+.carousel-control .icon-prev, .carousel-control .glyphicon-chevron-left {
+    top: 42%;
+    left: 15%;
+}
+
+.carousel-control .icon-next, .carousel-control .glyphicon-chevron-right {
+    top: 42%;
+    right: 15%;
+}
+
+.carousel-control {
+    text-shadow: 0 1px 2px *rgba(0,0,0,.6);
+}
+
+//Display Magnifying Glass on Product Page Image
+.galleryImages .active {
+    position: relative;
+    display: inline-block;
+}
+.galleryImages .active::before {
+    content: '\f002';
+    z-index: 5;
+    position: absolute;
+    left: 90%;
+    top: 90%;
+    //transform: translate( -90%, -90% );
+    padding: 15px 15px 15px 15px;
+    color: white;
+    font-family: 'FontAwesome';
+    font-size: 100%;
+    //font-size: 14px !important;
+    background-color:  #CCC;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.galleryImages .active:hover::before {
+        background-color: #1E355E;
+}
+
