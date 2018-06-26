@@ -1,24 +1,31 @@
-<div class="451qa_prod_item row" ng-swipe-left="showSwipe = true">
-    <div class="col-sm-4 text-center">
+<div class="451qa_prod_item row">
+    <div class="hidden-xs col-sm-4 text-center">
         <a class="thumbnail" href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">
-            <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >
-                <img ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>
+            <figure ng-show="LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl" >
+                <img ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" ng-show="LineItem.Product.Type=='VariableText'" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"/>
+                <img ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" ng-show="LineItem.Product.Type!='VariableText'"  style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"/>
             </figure>
             <div class="empty" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl">
                 <span class="fa empty"><i class="fa fa-camera"></i></span>
             </div>
-            <div class="btn btn-default">
+            {{User.UserField['New'].FileURL}}
+            <!--<div class="btn btn-default">
                 {{('View' | r) + ' ' + ('Product' | r) | xlat}}
-            </div>
+            </div>-->
         </a>
     </div>
-    <div class="col-sm-8 text-left">
+    <div class="hidden-xs col-sm-8 text-left border-top">
+    <a href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">
         <div class="panel-body">
-            <h3>{{LineItem.Product.Name}}
-                <small class="pull-right text-info">{{LineItem.Product.ExternalID}}</small>
+            <h3><span class="text-primary" ng-show="LineItem.Product.StaticSpecGroups['ItemInfo'].Specs['Prefix'].Value">{{LineItem.Product.StaticSpecGroups['ItemInfo'].Specs['Prefix'].Value}}&nbsp;</span>{{LineItem.Product.Name}}
+                <!--<small class="pull-right text-info">{{LineItem.Product.ExternalID}}</small>-->
             </h3>
-            <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
-            <section class="hidden-xs hidden-sm panel-body">
+            <!--<h3 class = "text-success" ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
+                {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
+                {{LineItem.Product.UnitOfMeasure}}
+            </h3>-->
+            <!--<p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />-->
+            <!--<section class="hidden-xs hidden-sm panel-body">
                 <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
                     {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
                     <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
@@ -31,15 +38,48 @@
                 <p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
                     {{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
                 </p>
-            </section>
+            </section>-->
         </div>
+    </a>
     </div>
-    <section class="hidden-lg hidden-md" ng-show="showSwipe" ng-swipe-right="showSwipe = false">
+    <!--For Mobile Phones-->
+    <div class="hidden-sm hidden-md hidden-lg col-xs-4 text-center">
+        <a class="thumbnail" href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">
+            <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >
+                <img ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}" style="max-height: 100px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" ng-show="LineItem.Product.Type=='VariableText'" />
+                <img ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}" style="max-height: 100px" ng-show="LineItem.Product.Type!='VariableText'" />
+            </figure>
+            <div class="empty" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" style="max-height: 100px">
+                <span class="fa empty"><i class="fa fa-camera"></i></span>
+            </div>
+        </a>
+    </div>
+        <a href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">
+        <div class="hidden-sm hidden-md hidden-lg col-xs-8 text-left border-top">
+            <div class="panel-body">
+                <p><span class="text-primary" ng-show="LineItem.Product.StaticSpecGroups['ItemInfo'].Specs['Prefix'].Value">{{LineItem.Product.StaticSpecGroups['ItemInfo'].Specs['Prefix'].Value}}&nbsp;</span>{{LineItem.Product.Name}}
+                <!--<small class="pull-right text-info">{{LineItem.Product.ExternalID}}</small>-->
+                </p>
+                <p class = "text-success" ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
+                    {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
+                    {{LineItem.Product.UnitOfMeasure}}
+                </p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <!--<section class="hidden-lg hidden-md" ng-show="showSwipe" ng-swipe-right="showSwipe = false">
         <div class="shortproduct-info panel-body text-center">
             <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
                 {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
                 <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
                 {{'for' | xlat}} {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
+            </p>
+            <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
+                {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
+            </p>
+            <p>
+               <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
             </p>
             <p ng-show="LineItem.Product.UnitOfMeasure">
                 {{'Unit of Measure' | r | xlat}}: {{LineItem.Product.UnitOfMeasure}}
@@ -51,5 +91,5 @@
                 {{('View' | r) + ' ' + ('Product' | r) | xlat}}
             </button>
         </div>
-    </section>
+    </section>-->
 </div>
