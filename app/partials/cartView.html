@@ -2,7 +2,7 @@
     <div ng-show="currentOrder" class="hidden-print">
         <nav class="nav">
             <ul>
-                <li><span class="text-primary">{{'Cart' | r | xlat}}</span></li>
+                <!--<li><span class="text-primary">{{'Cart' | r | xlat}}</span></li>-->
                 <li class="pull-right" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}" ></i></span></li>
             </ul>
         </nav>
@@ -45,10 +45,10 @@
                                     <h3 class="text-primary">
                                         <i ng-show="!item.KitIsInvalid" class="fa fa-edit"></i>
                                         <i ng-show="item.KitIsInvalid" class="fa fa-exclamation-triangle"></i>
-                                        {{item.ProductIDText}}
+                                        {{item.Product.Name}}
                                     </h3>
                                     <p>
-                                        {{item.Product.Name}}
+                                        {{item.ProductIDText}}
                                     </p>
                                 </a>
                             </div>
@@ -157,8 +157,14 @@
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-md-4 col-lg-3">
-                            <giftcardredemption ng-if="user.Permissions.contains('ViewPromotions')" />
+                            <giftcardredemption ng-if="user.Permissions.contains('ViewPromotions') && user.Type!='TempCustomer'" />
+                            <a href="admin">
+                                <div class="text-danger" ng-if="user.Permissions.contains('ViewPromotions') && user.Type=='TempCustomer'">
+                                    {{'To Redeem Gift Card, Click Here to Login' | r | xlat}}
+                                </div>
+                            </a>
                         </div>
+
                         <div class="col-md-3 col-md-offset-5 col-lg-4 text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
                             <h4 class="text-primary">
                                 <strong>{{'Subtotal' | r | xlat}} <span class="text-success">{{currentOrder.Subtotal | culturecurrency}}</span></strong>
@@ -172,6 +178,7 @@
                             </button>
                         </div>
                     </div>
+                    <div class="text-danger">{{gcMessage}}</div>
                 </div>
             </div>
             <div class="navbar-fixed-bottom">
