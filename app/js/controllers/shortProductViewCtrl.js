@@ -1,6 +1,9 @@
-four51.app.controller('shortProductViewCtrl', ['$routeParams', '$scope', 'ProductDisplayService', 'Order', 'User', '$location', '$route', function ($routeParams, $scope, ProductDisplayService) {
-	$scope.LineItem = {};
-	$scope.LineItem.Product = $scope.p;
-	ProductDisplayService.setNewLineItemScope($scope);
-	ProductDisplayService.setProductViewScope($scope);
+four51.app.controller('shortProductViewCtrl', ['$routeParams', '$scope', 'Product','ProductDisplayService', function ($routeParams, $scope, Product, ProductDisplayService) {
+	Product.get($scope.p.InteropID, function(product){
+		$scope.LineItem = {};
+		$scope.LineItem.Product = product;
+		$scope.LineItem.Product.Variants = null;
+		ProductDisplayService.setNewLineItemScope($scope);
+		ProductDisplayService.setProductViewScope($scope);
+	});
 }]);
