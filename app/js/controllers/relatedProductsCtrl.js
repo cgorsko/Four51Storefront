@@ -3,6 +3,7 @@ four51.app.controller('RelatedProductsCtrl', ['$scope', 'Product', '$sce', funct
 		Product.search(null, null, $scope.relatedgroupid, function(products) {
 			$scope.relatedProducts = products;
 		});
+		$scope.origproductid  = $scope.productid;
 		$scope.trusted = function(d){
 			if(d) return $sce.trustAsHtml(d);
 		}
