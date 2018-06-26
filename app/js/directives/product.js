@@ -75,7 +75,8 @@ four51.app.directive('shortproductviewgallery', function() {
 four51.app.directive('relatedproducts', function() {
 	var obj = {
 		scope: {
-			relatedgroupid: '='
+			relatedgroupid: '=',
+			productid: '='
 		},
 		restrict: 'E',
 		templateUrl: 'partials/relatedProductsView.html',
