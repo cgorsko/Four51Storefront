@@ -37,7 +37,29 @@ four51.app.directive('customselectionfield', ['$451', function($451) {
 					scope.change(scope.customfield);
 			};
 			scope.item = {}, scope.other = ''; // initialize the item variable to avoid checking for null
-
+            
+            scope.$watch('customfield.Value', function(n) {
+				if(n) {
+					var id = null;
+					var newOption = {};
+					angular.forEach(scope.customfield.Options, function (opt) {
+						if (opt.Value === n) {
+							opt.Selected = true;
+							id = opt.ID;
+							newOption = opt;
+						}
+						else {
+							opt.Selected = false;
+						}
+					});
+					scope.item = newOption;
+					scope.customfield.Value = newOption.Value;
+					scope.customfield.SelectedOptionID = id;
+					if (scope.change)
+					scope.change(scope.customfield);
+				}
+			});
+			
 			scope.init = function() {
 				var id = scope.customfield.Value != null ? scope.customfield.Options[scope.customfield.Options.length-1].ID : scope.customfield.DefaultOptionID;
 				var matched = false;
