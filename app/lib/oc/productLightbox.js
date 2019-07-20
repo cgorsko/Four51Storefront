@@ -38,16 +38,25 @@ function productlightbox() {
             '<a class="hidden-xs" ng-click="openLightboxModal($index)" ng-class="{active: $index==$parent.index}">',
             '<img ng-src="{{image.url}}" class="product-image-large img-responsive" />',
             '</a>',
-            '<a class="no-click visible-xs" ng-class="{active: $index==$parent.index}">',
+            '<a class="no-click visible-xs" ng-click="openLightboxModal($index)" ng-class="{active: $index==$parent.index}">',
             '<img ng-src="{{image.url}}" class="product-image-large img-responsive" />',
             '</a>',
             '</li>',
             '</ul>',
             '</div>',
-            '<div class="panel-footer">',
-            '<ul class="galleryThumbs">',
-            '<li ng-repeat="image in LineItem.images">',
-            '<a ng-click="$parent.index=$index" ng-class="{active: $index==$parent.index}">',
+            '<div class="panel-footer" >',
+            //For Items with Variable Spec Color
+            '<ul class="galleryThumbs" ng-show = "LineItem.Product.Specs[\'Color\']">',
+            '<li ng-repeat="image in LineItem.images" >',
+            '<a ng-click="lightBoxSet(image.Name)" ng-class="{active: $index==$parent.index}" >',
+            '<img ng-src="{{image.url}}" class="img-thumbnail img-responsive" />',
+            '</a>',
+            '</li>',
+            '</ul>',
+            //For all other Items
+            '<ul class="galleryThumbs" ng-show = "!LineItem.Product.Specs[\'Color\']">',
+            '<li ng-repeat="image in LineItem.images" >',
+            '<a ng-click="$parent.index=$index" ng-class="{active: $index==$parent.index}" >',
             '<img ng-src="{{image.url}}" class="img-thumbnail img-responsive" />',
             '</a>',
             '</li>',
@@ -106,6 +115,12 @@ function LightboxCtrl($scope, Lightbox) {
             LightboxImageScope($scope);
         }
     });
+
+    $scope.lightBoxSet = function(newValue) {
+        if (newValue) {
+                $scope.LineItem.Specs.Color.Value = newValue;
+        }
+    };
 
     $scope.$watch('LineItem.Specs.Color.Value', function(n,o){
         if ( n!= o) {
