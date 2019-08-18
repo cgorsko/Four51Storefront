@@ -76,7 +76,7 @@ function ContentModalCtrl($scope, $modal) {
                 '<h4>Who do I Contact with Questions?</h4>',
                 '<p>',
                 'Please reach out to Chris Gorski at cgorski@stevensgroupweb.com.  You can also call ',
-                'him at (847) 717-8229.',
+                'him at (331) 209-2109.',
                 '</p>',
                 //Optional footer
                 '<div class="modal-footer">',
