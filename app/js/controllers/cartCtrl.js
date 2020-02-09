@@ -1,6 +1,7 @@
-four51.app.controller('CartViewCtrl', ['$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
-function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
+four51.app.controller('CartViewCtrl', ['$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User', 'Security',
+function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Security) {
 	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
+	$scope.fileAuth = "&auth=" + Security.auth();
 	if ($scope.isEditforApproval) {
 		Order.get($routeParams.id, function(order) {
 			$scope.currentOrder = order;
