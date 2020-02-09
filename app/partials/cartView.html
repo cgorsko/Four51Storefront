@@ -32,7 +32,10 @@
                                 </p>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6 thumbnail" ng-show="item.Variant.LargeImageUrl || item.Product.SmallImageUrl">
-                                <figure>
+                                <figure ng-show="(item.Product.StaticSpecGroups && item.Product.StaticSpecGroups.LightboxImages) && (item.Specs && item.Specs.Color)">
+                                    <img ng-src="{{item.Product.StaticSpecGroups.LightboxImages.Specs[item.Specs.Color.Value].FileURL + fileAuth}}" />
+                                </figure>
+                                <figure ng-show="!item.Product.StaticSpecGroups || (item.Product.StaticSpecGroups && !item.Product.StaticSpecGroups.LightboxImages) || (item.Product.StaticSpecGroups && item.Product.StaticSpecGroups.LightboxImages) && (item.Specs && !item.Specs.Color)">
                                     <img ng-src="{{item.Variant.LargeImageUrl || item.Product.SmallImageUrl}}" />
                                 </figure>
                             </div>
