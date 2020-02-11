@@ -122,6 +122,14 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Secur
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;
 		angular.forEach($scope.currentOrder.LineItems, function(item){
+			if(!item.Product.SmallImageUrl){
+                		angular.forEach($scope.currentOrder.LineItems,function(li){
+                    		if(item.Product.InteropID == li.Product.InteropID && (li.Product.SmallImageUrl)){
+                       		 	item.Product.SmallImageUrl = li.Product.SmallImageUrl;
+                    			}
+                		});
+		    	}
+			
 			if (item.IsKitParent)
 				$scope.cart.$setValidity('kitValidation', !item.KitIsInvalid);
 			newTotal += item.LineTotal;
