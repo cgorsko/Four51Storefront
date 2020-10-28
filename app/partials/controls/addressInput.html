@@ -37,12 +37,12 @@
             </div>
             <div class="col-sm-6 view-form-icon">
                 <div>
-                    <label ng-class="{'required': address.IsCustEditable != false}">{{'Address Line 1' | r | xlat}}</label>
+                    <label ng-class="{'required': address.IsCustEditable != false}">{{'Street Address' | r | xlat}}</label>
                     <input name="street1" class="form-control" type="text" ng-model="address.Street1" placeholder="{{'Address Line 1' | r | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
                     <i class="fa fa-map-marker"></i>
                 </div>
                 <div>
-                    <label ng-show="address.Street2">{{'Address Line 2' | r | xlat}}</label>
+                    <label ng-class="{'required': address.IsCustEditable != false}">{{'Suite/Apartment' | r | xlat}}</label>
                     <input name="street2" class="form-control" type="text" ng-model="address.Street2" placeholder="{{'Address Line 2' | r | xlat}}" autocomplete="off" ng-disabled="address.IsCustEditable == false" />
                     <i class="fa fa-map-marker"></i>
                 </div>
