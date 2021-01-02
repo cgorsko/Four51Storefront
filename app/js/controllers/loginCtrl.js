@@ -35,10 +35,7 @@ function ($scope, $sce, $route, $location, User) {
 	}
 
 	var _login = function() {
-		var userPass = {};
-        userPass.Username = $scope.credentials.Username;
-        userPass.Password = $scope.credentials.Password;
-		User.login(userPass,
+		User.login($scope.credentials,
 			function(data) {
 				if ($scope.credentials.Email) {
 					$scope.loginMessage = data.LogonInfoSent;
