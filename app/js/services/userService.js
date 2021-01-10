@@ -123,16 +123,25 @@ four51.app.factory('User', ['$q', '$rootScope', '$resource', '$451', 'Security',
 		);
 	};
 
-    var _logout = function() {
-        store.clear();
-        Security.logout();
+    var _logout = function(credentials, success, error) {
+    	store.clear();
+		$resource($451.api('logout/user')).save(credentials).$promise.then(
+			function(u) {
+        		Security.logout();
+        		_then(success, u);
+			},
+			function(ex) {
+				if (angular.isFunction(error))
+					error(Error.format(ex));
+			}
+		);
     };
 
     return {
         get: _get,
         login: _login,
         save: _save,
-        logout: _logout,
+        logout: _logout,      
 	    refresh: _refresh,
 	    reset: _reset,
 	    setcurrentorder: _setorder,
