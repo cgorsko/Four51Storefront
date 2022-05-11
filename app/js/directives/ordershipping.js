@@ -182,10 +182,18 @@ four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressLi
 					function(order) {
 						Shipper.query(order, function(list) {
 							$scope.shippers = list;
-							if($scope.shippers.length == 1){
+								//$scope.shippingFetchIndicator = false;
+							//}
+						//);
+						//Default shipper if only one option available
+						if($scope.shippers.length == 1){
 								$scope.currentOrder.LineItems[0].ShipperName = $scope.shippers[0].Name;
 								$scope.updateShipper();
 							}
+						else{
+								$scope.currentOrder.LineItems[0].ShipperName = $scope.shippers[0].Name;
+								$scope.updateShipper();
+						}
 							$scope.shippingFetchIndicator = false;
 						});
 					},
