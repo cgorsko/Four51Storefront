@@ -190,7 +190,7 @@ four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressLi
 								$scope.currentOrder.LineItems[0].ShipperName = $scope.shippers[0].Name;
 								$scope.updateShipper();
 							}
-						else{
+						if($scope.shippers.length > 1){
 								$scope.currentOrder.LineItems[0].ShipperName = $scope.shippers[0].Name;
 								$scope.updateShipper();
 						}
