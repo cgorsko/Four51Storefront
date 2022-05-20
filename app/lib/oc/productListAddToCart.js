@@ -16,7 +16,7 @@ function productlistaddtocart() {
     function template() {
         return [
             '<form name="addToOrderForm"" ng-submit="addToOrder()">',
-                '<div class="view-form-icon" ng-show="allowAddToOrderInProductList">',
+                '<div class="view-form-icon">',
                     '<div class="row" style="padding-bottom: 5px;">',
                         '<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">',
                             '<label class="required">{{\'Quantity\' | r | xlat}}</label>',
