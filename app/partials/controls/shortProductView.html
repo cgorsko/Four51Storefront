@@ -2,8 +2,10 @@
     <div class="hidden-xs col-sm-4 text-center">
         <a class="thumbnail" href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">
             <figure ng-show="LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl" >
-                <img ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" ng-show="LineItem.Product.Type=='VariableText'" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"/>
-                <img ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" ng-show="LineItem.Product.Type!='VariableText'"  style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"/>
+                <img ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" ng-show="LineItem.Product.Type=='VariableText' && LineItem.Product.UNSPSC!='NOSHADOW'" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"/>
+                <img ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" ng-show="LineItem.Product.Type!='VariableText' && LineItem.Product.UNSPSC!='NOSHADOW'"  style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"/>
+                <img ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" ng-show="LineItem.Product.Type=='VariableText' && LineItem.Product.UNSPSC=='NOSHADOW'" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.0), 0 6px 20px 0 rgba(0, 0, 0, 0.0)"/>
+                <img ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" ng-show="LineItem.Product.Type!='VariableText' && LineItem.Product.UNSPSC=='NOSHADOW'"  style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.0), 0 6px 20px 0 rgba(0, 0, 0, 0.0)"/>
             </figure>
             <div class="empty" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl">
                 <span class="fa empty"><i class="fa fa-camera"></i></span>
